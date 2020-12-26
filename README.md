@@ -1,7 +1,15 @@
 # linux101
 
 
-- split a multifasta file in each set with their corresponding header 
+
+
+
+#01 Rename
+
+cat ala.cds.fasta | awk '{ gsub(/alaSesamum_al;/, "ala_"); print }' > ala.cds.formatted.fasta
+
+
+#02 split a multifasta file in each set with their corresponding header 
 
 
 ```
@@ -12,6 +20,15 @@ print $0 > filename }'
 
 
 ```
+
+#03 make a tab separated file as in put for PREP suite online tool 
+
+cat ind_accD.fasta | awk 'NR==2{print "indicum"}2' | awk 'NR==3{print "accD"}3' | awk 'NR==4{print "1"}4' | awk 'NR==5{print "0.8"}5'| awk '{if (NR!=1) {print}}' | awk -F'\n' '{$1=$1} 1' RS='\n\n' OFS='\t' > accD.rna.ready
+
+
+
+
+
 
 
 
