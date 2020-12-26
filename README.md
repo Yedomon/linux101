@@ -1,6 +1,22 @@
 # linux101
 
 
+- split a multifasta file in each set with their corresponding header 
+
+
+```
+
+cat yourfile.fasta | awk '{
+if (substr($0, 1, 1)==">") {filename=(substr($0,2) ".fasta")}
+print $0 > filename }'
+
+
+```
+
+
+
+
+
 - How To Count Files in Directory on Linux | [answer](https://devconnected.com/how-to-count-files-in-directory-on-linux/) | `*ls | wc -l*`
 
 
